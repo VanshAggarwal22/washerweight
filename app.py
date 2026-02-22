@@ -6,38 +6,52 @@ st.set_page_config(page_title="Washer Weight Calculator", layout="centered")
 # ---------- Custom Styling ----------
 st.markdown("""
 <style>
+
+/* Adaptive Background */
 .main {
-    background-color: #f5f7fa;
+    background-color: var(--background-color);
 }
+
+/* Adaptive Heading */
 .title {
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
-    color: #1f2937;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
 }
+
+/* Subtitle */
 .subtitle {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-color);
+    opacity: 0.75;
 }
+
+/* Card Styling */
 .card {
-    background-color: white;
+    background-color: var(--secondary-background-color);
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
     margin-bottom: 20px;
 }
+
+/* Result Box */
 .result-box {
-    background-color: #e6f4ea;
-    padding: 15px;
-    border-radius: 8px;
+    background-color: rgba(0, 200, 120, 0.1);
+    padding: 18px;
+    border-radius: 10px;
     font-weight: 600;
-    color: #065f46;
+    color: var(--text-color);
+    border: 1px solid rgba(0, 200, 120, 0.4);
 }
+
 </style>
 """, unsafe_allow_html=True)
 
 # ---------- Header ----------
 st.markdown('<div class="title">Spring Washer & Flat Washer Weight Calculator</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Accurate industrial weight estimation based on dimensions and material density</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Industrial weight estimation based on dimensions and material density</div>', unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
@@ -55,7 +69,7 @@ density = material_options[material]
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------- Calculator Selection ----------
-calc_type = st.radio("Choose Calculator", ["Spring Washer", "Flat Washer"])
+calc_type = st.radio("Choose Calculator Type", ["Spring Washer", "Flat Washer"])
 
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
