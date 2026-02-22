@@ -50,7 +50,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------- Header ----------
-st.markdown('<div class="title">Spring Washer & Flat Washer Weight Calculator</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">Spring Washer Weight Calculator</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Industrial weight estimation based on dimensions and material density</div>', unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
@@ -69,7 +69,7 @@ density = material_options[material]
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------- Calculator Selection ----------
-calc_type = st.radio("Choose Calculator Type", ["Spring Washer", "Flat Washer"])
+calc_type = st.radio("Choose Calculator Type", ["Spring Washer", "Plain Washer"])
 
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
@@ -90,12 +90,15 @@ if calculate:
         t = thickness / 1000
 
         volume = math.pi * t * ((od/2)**2 - (id_/2)**2)
-        weight_one = volume * density
-        total_weight = weight_one * quantity
+        weight_one_kg = volume * density
+        total_weight_kg = weight_one_kg * quantity
+
+        weight_one_g = weight_one_kg * 1000
+        total_weight_g = total_weight_kg * 1000
 
         st.markdown('<div class="result-box">', unsafe_allow_html=True)
-        st.write(f"Weight of One {calc_type}: {weight_one:.6f} kg")
-        st.write(f"Total Weight for {quantity} Pieces: {total_weight:.6f} kg")
+        st.write(f"Weight of One {calc_type}: {weight_one_kg:.6f} kg  |  {weight_one_g:.2f} g")
+        st.write(f"Total Weight for {quantity} Pieces: {total_weight_kg:.6f} kg  |  {total_weight_g:.2f} g")
         st.markdown('</div>', unsafe_allow_html=True)
     else:
         st.error("Outer diameter must be greater than inner diameter and thickness must be greater than zero.")
